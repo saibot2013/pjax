@@ -1,6 +1,6 @@
 {
   "name": "saibot2013-pjax",
-  "version": "dev-0.1.5",
+  "version": "0.3.0"
   "description": "Easily enable fast Ajax navigation on any website (using pushState +  xhr)",
   "keywords": [
     "pjax",
