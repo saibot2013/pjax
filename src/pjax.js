@@ -274,8 +274,6 @@
           return -7
         }
 
-        event.preventDefault()
-
         // fire onClick event
         var clickEvent = new CustomEvent("pjax:click", { "detail": {"event" : event, "element" : el}, "cancelable":true });
         document.dispatchEvent(clickEvent);
@@ -284,6 +282,7 @@
           return -8
         }
 
+        event.preventDefault()
 
         if (this.options.currentUrlFullReload) {
           if (el.href === window.location.href) {
