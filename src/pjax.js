@@ -138,7 +138,6 @@
       }
 
       event.eventName = e
-
       if (document.createEvent) {
         Pjax.forEachEls(els, function(el) {
           el.dispatchEvent(event)
@@ -270,7 +269,21 @@
           return -5
         }
 
+        // Ignore target=_blank
+        if(el.target.toLowerCase() === "_blank"){
+          return -7
+        }
+
         event.preventDefault()
+
+        // fire onClick event
+        var clickEvent = new CustomEvent("pjax:click", { "detail": {"event" : event, "element" : el}, "cancelable":true });
+        document.dispatchEvent(clickEvent);
+        // Click-Event was canceled, so cancle request
+        if(clickEvent.defaultPrevented){
+          return -8
+        }
+
 
         if (this.options.currentUrlFullReload) {
           if (el.href === window.location.href) {
