@@ -31,6 +31,12 @@
       this.options.analytics = this.options.analytics || function(options) {
         // options.backward or options.foward can be true or undefined
         // by default, we do track back/foward hit
+        // Piwik
+        if(window._paq){
+          _paq.push(['setDocumentTitle', document.title]);
+          _paq.push(['setCustomUrl', window.location.href]);
+          _paq.push(['trackPageView']);
+        }
         // https://productforums.google.com/forum/#!topic/analytics/WVwMDjLhXYk
         if (window._gaq) {
           _gaq.push(["_trackPageview"])
